@@ -4,6 +4,15 @@
       <van-uploader :after-read="afterRead" />
     </demo-block>
 
+    <demo-block :title="$t('repeat')">
+      <van-uploader
+        v-model="repeatFileList"
+        :deletable="false"
+        :max-count="1"
+        :single-repeat="true"
+      />
+    </demo-block>
+
     <demo-block :title="$t('preview')">
       <van-uploader v-model="fileList" multiple accept="*" />
     </demo-block>
@@ -38,6 +47,7 @@
 export default {
   i18n: {
     'zh-CN': {
+      repeat: '重复选择',
       status: '上传状态',
       failed: '上传失败',
       upload: '上传文件',
@@ -50,6 +60,7 @@ export default {
       invalidType: '请上传 jpg 格式图片',
     },
     'en-US': {
+      repeat: 'Single Repeat',
       status: 'Upload Status',
       failed: 'Failed',
       upload: 'Upload File',
@@ -65,6 +76,7 @@ export default {
 
   data() {
     return {
+      repeatFileList: [],
       fileList: [
         { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
         { url: 'https://img.yzcdn.cn/vant/tree.jpg' },

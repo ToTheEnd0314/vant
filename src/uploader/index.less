@@ -5,11 +5,17 @@
   display: inline-block;
 
   &__wrapper {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
 
     &--disabled {
       opacity: @uploader-disabled-opacity;
+    }
+
+    &--single {
+      width: @uploader-size;
+      height: @uploader-size;
     }
   }
 
@@ -58,6 +64,19 @@
       margin-top: @padding-xs;
       color: @uploader-text-color;
       font-size: @uploader-text-font-size;
+    }
+  }
+
+  &__singlerepeat {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @uploader-size;
+    height: @uploader-size;
+    opacity: 1;
+
+    &--needhide {
+      opacity: 0;
     }
   }
 

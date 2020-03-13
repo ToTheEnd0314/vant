@@ -27,6 +27,17 @@ export default {
 };
 ```
 
+### Single Repeat
+```html
+<van-uploader
+  v-model="repeatFileList"
+  :deletable="false"
+  :max-count="1"
+  :single-repeat="true"
+  >
+</van-uploader>
+```
+
 ### Preview File
 
 ```html
@@ -159,6 +170,7 @@ export default {
 |------|------|------|------|
 | accept | Accepted [file type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#Unique_file_type_specifiers) | *string* | `image/*` |
 | name `v2.0.3` | Input name | *number \| string* | - |
+| single-repeat `vant-byy` | One file per change | *boolean* | `false` |
 | preview-size | Size of preview image | *number \| string* | `80px` |
 | preview-image `v2.1.5` | Whether to show image preview | *boolean* | `true` |
 | preview-full-image | Whethe to show full screen image preview when click image | *boolean* | `true` |

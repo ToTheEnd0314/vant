@@ -29,6 +29,10 @@ export default createComponent({
     beforeRead: Function,
     beforeDelete: Function,
     previewSize: [Number, String],
+    singleRepeat: {
+      type: Boolean,
+      default: false,
+    },
     name: {
       type: [Number, String],
       default: '',
@@ -321,15 +325,15 @@ export default createComponent({
 
     genPreviewList() {
       if (this.previewImage) {
-        return this.fileList.map(this.genPreviewItem);
+        let fileList = this.fileList.map(this.genPreviewItem);
+
+        if (this.singleRepeat) fileList = fileList.slice(-1);
+
+        return fileList;
       }
     },
 
-    genUpload() {
-      if (this.fileList.length >= this.maxCount) {
-        return;
-      }
-
+    _byy_build_input(className) {
       const slot = this.slots();
 
       const Input = (
@@ -363,7 +367,7 @@ export default createComponent({
       }
 
       return (
-        <div class={bem('upload')} style={style}>
+        <div class={className || bem('upload')} style={style}>
           <Icon name={this.uploadIcon} class={bem('upload-icon')} />
           {this.uploadText && (
             <span class={bem('upload-text')}>{this.uploadText}</span>
@@ -372,12 +376,42 @@ export default createComponent({
         </div>
       );
     },
+
+    genUpload() {
+      let inputJsx;
+
+      if (this.singleRepeat) {
+        if (this.maxCount !== 1) {
+          console.error(
+            '##Vant-Byy:\nwhen [singleRepeat] is valid, the [maxCount] must 1'
+          );
+          inputJsx = undefined;
+        } else {
+          const className =
+            this.fileList.length === 0
+              ? `${bem('upload')} ${bem('singlerepeat')}`
+              : `${bem('upload')} ${bem('singlerepeat')} ${bem(
+                'singlerepeat--needhide'
+              )}`;
+
+          inputJsx = this._byy_build_input(className);
+        }
+      } else if (this.fileList.length < this.maxCount) {
+        inputJsx = this._byy_build_input();
+      }
+
+      return inputJsx;
+    },
   },
 
   render() {
+    const className = this.singleRepeat
+      ? `${bem('wrapper')} ${bem('wrapper--single')}`
+      : bem('wrapper', { disabled: this.disabled });
+
     return (
       <div class={bem()}>
-        <div class={bem('wrapper', { disabled: this.disabled })}>
+        <div class={className}>
           {this.genPreviewList()}
           {this.genUpload()}
         </div>
