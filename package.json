@@ -1,6 +1,6 @@
 {
-  "name": "vant",
-  "version": "2.5.5",
+  "name": "vant-byy",
+  "version": "0.1.0",
   "description": "Mobile UI Components built on Vue",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -45,13 +45,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:youzan/vant.git"
+    "url": "git@github.com:ToTheEnd0314/vant.git"
   },
   "keywords": [
     "vue",
     "component"
   ],
-  "author": "youzanfe",
+  "author": "horseslee",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "7.x",
