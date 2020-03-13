@@ -1,0 +1,16 @@
+docs
+node_modules
+packages
+site
+src
+test
+.editorconfig
+.eslintignore
+.gitignore
+.gitpod.yml
+.npmignore
+babel.config.js
+tsconfig.json
+vant.config.js
+webpack.config.js
+yarn.lock
