@@ -42,11 +42,11 @@ module.exports = {
         libraryName: 'vant',
         libraryDirectory: 'es',
         // 指定样式路径
-        style: name => `${name}/style/less`
+        style: (name) => `${name}/style/less`,
       },
-      'vant'
-    ]
-  ]
+      'vant',
+    ],
+  ],
 };
 ```
 
@@ -75,17 +75,44 @@ module.exports = {
         {
           loader: 'less-loader',
           options: {
-            modifyVars: {
-              // 直接覆盖变量
-              'text-color': '#111',
-              'border-color': '#eee'
-              // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
-              'hack': `true; @import "your-less-file-path.less";`
-            }
-          }
-        }
-      ]
-    }
-  ]
+            // 若使用 less-loader@5，请移除 lessOptions 这一级，直接配置选项。
+            lessOptions: {
+              modifyVars: {
+                // 直接覆盖变量
+                'text-color': '#111',
+                'border-color': '#eee',
+                // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
+                hack: `true; @import "your-less-file-path.less";`,
+              },
+            },
+          },
+        },
+      ],
+    },
+  ],
+};
+```
+
+如果 vue-cli 搭建的项目，可以在 `vue.config.js` 中进行配置。
+
+```js
+// vue.config.js
+module.exports = {
+  css: {
+    loaderOptions: {
+      less: {
+        // 若使用 less-loader@5，请移除 lessOptions 这一级，直接配置选项。
+        lessOptions: {
+          modifyVars: {
+            // 直接覆盖变量
+            'text-color': '#111',
+            'border-color': '#eee',
+            // 或者可以通过 less 文件覆盖（文件路径为绝对路径）
+            hack: `true; @import "your-less-file-path.less";`,
+          },
+        },
+      },
+    },
+  },
 };
 ```
