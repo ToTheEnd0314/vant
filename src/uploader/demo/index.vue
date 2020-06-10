@@ -10,6 +10,7 @@
         :deletable="false"
         :max-count="1"
         :single-repeat="true"
+        accept="image/*"
       />
     </demo-block>
 
@@ -76,7 +77,12 @@ export default {
 
   data() {
     return {
-      repeatFileList: [],
+      repeatFileList: [
+        {
+          url: "https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/241f95cad1c8a786262fb6e86509c93d71cf50cb.jpg",
+        }
+      ],
+
       fileList: [
         { url: 'https://img.yzcdn.cn/vant/leaf.jpg' },
         { url: 'https://img.yzcdn.cn/vant/tree.jpg' },
