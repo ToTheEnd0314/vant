@@ -27,7 +27,7 @@ const [createComponent, bem] = createNamespace('tabs');
 export default createComponent({
   mixins: [
     ParentMixin('vanTabs'),
-    BindEventMixin(function(bind) {
+    BindEventMixin(function (bind) {
       if (!this.scroller) {
         this.scroller = getScroller(this.$el);
       }
@@ -166,11 +166,11 @@ export default createComponent({
   },
 
   mounted() {
-    this.onShow();
+    this.init();
   },
 
   activated() {
-    this.onShow();
+    this.init();
     this.setLine();
   },
 
@@ -180,7 +180,7 @@ export default createComponent({
       this.setLine();
     },
 
-    onShow() {
+    init() {
       this.$nextTick(() => {
         this.inited = true;
         this.tabHeight = getVisibleHeight(this.$refs.wrap);
@@ -231,7 +231,7 @@ export default createComponent({
 
     // correct the index of active tab
     setCurrentIndexByName(name) {
-      const matched = this.children.filter(tab => tab.computedName === name);
+      const matched = this.children.filter((tab) => tab.computedName === name);
       const defaultIndex = (this.children[0] || {}).index || 0;
       this.setCurrentIndex(matched.length ? matched[0].index : defaultIndex);
     },
@@ -345,7 +345,7 @@ export default createComponent({
         refInFor
         type={type}
         dot={item.dot}
-        info={item.info}
+        info={isDef(item.badge) ? item.badge : item.info}
         title={item.title}
         color={this.color}
         style={item.titleStyle}

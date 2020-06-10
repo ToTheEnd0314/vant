@@ -1,46 +1,59 @@
 <template>
   <demo-section>
-    <demo-block :title="$t('basicUsage')">
-      <van-button type="danger" :text="$t('basicUsage')" @click="showNotify" />
+    <demo-block :title="t('basicUsage')">
+      <van-button type="danger" :text="t('basicUsage')" @click="showNotify" />
     </demo-block>
 
-    <demo-block :title="$t('notifyType')">
+    <demo-block :title="t('notifyType')">
       <div style="margin-bottom: 15px;">
         <van-button
           type="info"
-          :text="$t('primary')"
+          :text="t('primary')"
           @click="showType('primary')"
         />
         <van-button
           type="primary"
-          :text="$t('success')"
+          :text="t('success')"
           @click="showType('success')"
         />
       </div>
 
       <van-button
         type="danger"
-        :text="$t('danger')"
+        :text="t('danger')"
         @click="showType('danger')"
       />
       <van-button
         type="warning"
-        :text="$t('warning')"
+        :text="t('warning')"
         @click="showType('warning')"
       />
     </demo-block>
 
-    <demo-block :title="$t('customNotify')">
+    <demo-block :title="t('customNotify')">
       <van-button
         type="primary"
-        :text="$t('customColor')"
+        :text="t('customColor')"
         @click="showCustomColor"
       />
       <van-button
         type="primary"
-        :text="$t('customDuration')"
+        :text="t('customDuration')"
         @click="showCustomDuration"
       />
+    </demo-block>
+
+    <demo-block :title="t('componentCall')">
+      <van-button
+        type="primary"
+        :text="t('componentCall')"
+        @click="showComponentCall"
+      />
+
+      <van-notify v-model="show" type="success">
+        <van-icon name="bell" style="margin-right: 4px;" />
+        <span>{{ t('content') }}</span>
+      </van-notify>
     </demo-block>
   </demo-section>
 </template>
@@ -57,6 +70,7 @@ export default {
       notifyType: '通知类型',
       customColor: '自定义颜色',
       customNotify: '自定义配置',
+      componentCall: '组件调用',
       customDuration: '自定义时长',
     },
     'en-US': {
@@ -68,18 +82,25 @@ export default {
       notifyType: 'Notify Type',
       customColor: 'Custom Color',
       customNotify: 'Custom Notify',
+      componentCall: 'Component Call',
       customDuration: 'Custom Duration',
     },
   },
 
+  data() {
+    return {
+      show: false,
+    };
+  },
+
   methods: {
     showNotify() {
-      this.$notify(this.$t('content'));
+      this.$notify(this.t('content'));
     },
 
     showCustomColor() {
       this.$notify({
-        message: this.$t('customColor'),
+        message: this.t('customColor'),
         color: '#ad0000',
         background: '#ffe1e1',
       });
@@ -87,16 +108,23 @@ export default {
 
     showCustomDuration() {
       this.$notify({
-        message: this.$t('customDuration'),
+        message: this.t('customDuration'),
         duration: 1000,
       });
     },
 
     showType(type) {
       this.$notify({
-        message: this.$t('content'),
+        message: this.t('content'),
         type,
       });
+    },
+
+    showComponentCall() {
+      this.show = true;
+      setTimeout(() => {
+        this.show = false;
+      }, 2000);
     },
   },
 };
