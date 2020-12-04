@@ -4,20 +4,7 @@
       <van-uploader :after-read="afterRead" />
     </demo-block>
 
-<<<<<<< HEAD
-    <demo-block :title="$t('repeat')">
-      <van-uploader
-        v-model="repeatFileList"
-        :deletable="false"
-        :max-count="1"
-        :single-repeat="true"
-      />
-    </demo-block>
-
-    <demo-block :title="$t('preview')">
-=======
     <demo-block :title="t('preview')">
->>>>>>> 8c995f6320a3b5ccb5c280e3f5a0bc6ef626fa94
       <van-uploader v-model="fileList" multiple accept="*" />
     </demo-block>
 
