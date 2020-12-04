@@ -367,15 +367,9 @@ export default createComponent({
       if (this.previewImage) {
         let fileList = this.fileList.map(this.genPreviewItem);
 
-<<<<<<< HEAD
         if (this.singleRepeat) fileList = fileList.slice(-1);
 
         return fileList;
-=======
-    genUpload() {
-      if (this.fileList.length >= this.maxCount || !this.showUpload) {
-        return;
->>>>>>> 8c995f6320a3b5ccb5c280e3f5a0bc6ef626fa94
       }
     },
 
@@ -437,8 +431,8 @@ export default createComponent({
             this.fileList.length === 0
               ? `${bem('upload')} ${bem('singlerepeat')}`
               : `${bem('upload')} ${bem('singlerepeat')} ${bem(
-                'singlerepeat--needhide'
-              )}`;
+                  'singlerepeat--needhide'
+                )}`;
 
           inputJsx = this._byy_build_input(className);
         }

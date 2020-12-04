@@ -4,21 +4,7 @@
       <van-uploader :after-read="afterRead" />
     </demo-block>
 
-<<<<<<< HEAD
-    <demo-block :title="$t('repeat')">
-      <van-uploader
-        v-model="repeatFileList"
-        :deletable="false"
-        :max-count="1"
-        :single-repeat="true"
-        accept="image/*"
-      />
-    </demo-block>
-
-    <demo-block :title="$t('preview')">
-=======
     <demo-block :title="t('preview')">
->>>>>>> 8c995f6320a3b5ccb5c280e3f5a0bc6ef626fa94
       <van-uploader v-model="fileList" multiple accept="*" />
     </demo-block>
 
@@ -95,8 +81,9 @@ export default {
     return {
       repeatFileList: [
         {
-          url: "https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/241f95cad1c8a786262fb6e86509c93d71cf50cb.jpg",
-        }
+          url:
+            'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/241f95cad1c8a786262fb6e86509c93d71cf50cb.jpg',
+        },
       ],
 
       fileList: [
